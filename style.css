@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: 'Cinzel', serif;
   }
   body {
     height: 100vh;
@@ -65,7 +66,7 @@
     left:79%;
     margin-left:60px;
   }
-  .cont .drip:nth-child(4){
+  .cont .drip:nth-child(3){
     border-color:#720000;
     height:29px;
     width:29px;
@@ -74,7 +75,7 @@
     left:93%;
     margin-left:60px;
   }
-  .cont .drip:nth-child(5){
+  .cont .drip:nth-child(4){
     border-color:#720000;
     height:20px;
     width:20px;
@@ -83,7 +84,7 @@
     left:35%;
     margin-left:60px;
   }
-  .cont .drip:nth-child(20){
+  .cont .drip:nth-child(5){
     border-color:#720000;
     height:20px;
     width:20px;
@@ -93,12 +94,111 @@
     margin-left:60px;
   }
   .rsvp-card {
-    width: 30vw;
+    width: 60%;
     height: 80vh;
     background-color: black;
     border: 1px solid white;
-    
+    color: white;
+    border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
     z-index: 2;
+    box-shadow: 0 0 50px 2px white;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  h1 {
+    font-family: "Metal Mania";
+    font-size: 60px;
+    text-align: center;
+    padding: 40px;
+  }
+
+  h3 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  p {
+    width: 40%;
+    text-align: justify;
+    margin-top: 30px;
+    margin-left: 60px;
+    padding-top: 30px;
+    line-height: 2;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .floating-label {
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: 14px;
+    transition: 0.2s ease all;
+    font-size: 16px;
+    color: #999;
+  }
+
+  .focused .floating-label {
+    top: -8px;
+    font-size: 12px;
+    /* color: #333; */
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-top: 40px;
+    margin-right: 60px;
+  }
+
+  .form-control, .floating-label {
+    margin-top: 30px;
+    color: white;
+    background-color: black;
+    /* border: none; */
+  }
+
+  .focused .floating-label {
+    color: white;
+  }
+
+  button {
+    position: relative;
+    top: 30px;
+    width: 200px;
+    padding: 10px;
+    font-size: large;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #720000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+  }
+
+  button:hover {
+    border: 1px solid white;
+  }
+
+  button:active {
+    color: #720000;
+    background-color: white;
   }

@@ -4,7 +4,13 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="resources/MetalMania-Regular.ttf">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;800&display=swap" rel="stylesheet">
+    <script src="do-stuff.js" defer></script>
 </head>
 <body>
 
@@ -30,26 +36,6 @@
     <div class="drip"></div>
     <div class="drip"></div>
     <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
 
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
       <!-- <defs> -->
@@ -63,7 +49,30 @@
   </div>
 
   <div class="rsvp-card">
-    
+    <h1>Dillehay's Wicked Witching Hour</h1>
+    <h3>A Halloween Spectacle</h3>
+    <div class="card-content">
+      <p>Join us on Saturday, October 28, for "Dillehay's Wicked Witching Hour: A Halloween Spectacle." Prepare for an enchanting night of mystique and magic as we celebrate the season with eerie melodies, sinisterly delicious treats, and captivating wonder. Dress in your most bewitching attire and RSVP by October 20, to be part of this unforgettable Halloween experience. Don't miss out on the chance to revel in the extraordinary – embrace the wicked and wonderful at Dillehay's Wicked Witching Hour!</p>
+
+      <div class="form-wrapper">
+        <div class="form-group">
+          <input type="text" class="form-control" id="first-name" name="first-name" required>
+          <label class="floating-label" for="first-name">First Name</label>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" class="form-control" id="last-name" name="last-name" required>
+          <label class="floating-label" for="last-name">Last Name</label>
+        </div>
+        
+        <div class="form-group">
+          <input type="number" class="form-control" id="guests" name="guests">
+          <label class="floating-label" for="guests">How many guests will you have with you?</label>
+        </div>
+
+        <button type="submit" onclick="submitLogic()">I'll Be There</button>
+    </div>
+  </div>
   </div>
 
 </body>
