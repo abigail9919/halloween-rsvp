@@ -94,6 +94,7 @@
     margin-left:60px;
   }
   .rsvp-card {
+    overflow-y: hidden;
     width: 60%;
     height: 80vh;
     background-color: black;
@@ -166,6 +167,7 @@
     width: 40%;
     margin-top: 40px;
     margin-right: 60px;
+    height: 500px;
   }
 
   .form-control, .floating-label {
@@ -201,4 +203,59 @@
   button:active {
     color: #720000;
     background-color: white;
+  }
+
+  @media only screen and (max-width: 1600px) {
+    .rsvp-card {
+      padding-top: 10px;
+    }
+    p {
+      padding-top: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .rsvp-card {
+      border: none;
+      box-shadow: none;
+      overflow-y: scroll;
+    }
+    h1 {
+      font-size: xx-large;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h3 {
+      margin-left: auto;
+      margin-right: auto;
+      font-size: medium;
+    }
+    .card-content {
+      flex-direction: column;
+    }
+    p {
+      width: 80%;
+    text-align: justify;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+    }
+    .form-wrapper {
+      margin-top: 10px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input {
+      width: 100%;
+      height: 50px;
+      font-size: small;
+    }
+    .form-control, .floating-label {
+      font-size: small;
+    }
+    .form-control, .floating-label {
+      margin-top: 10px;
+    }
   }
