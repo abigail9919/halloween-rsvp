@@ -1,11 +1,23 @@
-const { MongoClient } = require('mongodb');
 
-require('dotenv').config();
-const uri = process.env.MONGODB_URI;
+const uri = "mongodb+srv://ard99:f8H8rE8y1ZWkpVEL@cluster0.g1qly6d.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
 const dbName = "Halloween";
 const collectionName = "GuestInfo";
+
+const formInputs = document.querySelectorAll('.form-control');
+
+formInputs.forEach(input => {
+  input.addEventListener('focus', () => {
+    input.parentElement.classList.add('focused');
+  });
+
+  input.addEventListener('blur', () => {
+    if (input.value === '') {
+      input.parentElement.classList.remove('focused');
+    }
+  });
+});
 
 const guest = {
     firstName: String,
@@ -16,8 +28,6 @@ const guest = {
 var guestFirstName = document.getElementById("first-name");
 var guestLastName = document.getElementById("last-name");
 var guestAmount = document.getElementById("guests");
-
-const formInputs = document.querySelectorAll('.form-control');
 
 formInputs.forEach(input => {
   input.addEventListener('focus', () => {
@@ -35,6 +45,7 @@ async function submitLogic() {
   const firstName = guestFirstName.value;
   const lastName = guestLastName.value;
   const numOfGuests = parseInt(guestAmount.value);
+  alert(firstName);
 
   try {
       await client.connect();
