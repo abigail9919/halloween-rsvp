@@ -1,71 +1,38 @@
+const formInputs = document.querySelectorAll(".form-control");
 
-const uri = "mongodb+srv://ard99:f8H8rE8y1ZWkpVEL@cluster0.g1qly6d.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
-
-const dbName = "Halloween";
-const collectionName = "GuestInfo";
-
-const formInputs = document.querySelectorAll('.form-control');
-
-formInputs.forEach(input => {
-  input.addEventListener('focus', () => {
-    input.parentElement.classList.add('focused');
+formInputs.forEach((input) => {
+  input.addEventListener("focus", () => {
+    input.parentElement.classList.add("focused");
   });
 
-  input.addEventListener('blur', () => {
-    if (input.value === '') {
-      input.parentElement.classList.remove('focused');
-    }
-  });
-});
-
-const guest = {
-    firstName: String,
-    lastName: String,
-    numOfGuests: Number
-};
-
-var guestFirstName = document.getElementById("first-name");
-var guestLastName = document.getElementById("last-name");
-var guestAmount = document.getElementById("guests");
-
-formInputs.forEach(input => {
-  input.addEventListener('focus', () => {
-    input.parentElement.classList.add('focused');
-  });
-
-  input.addEventListener('blur', () => {
-    if (input.value === '') {
-      input.parentElement.classList.remove('focused');
+  input.addEventListener("blur", () => {
+    if (input.value === "") {
+      input.parentElement.classList.remove("focused");
     }
   });
 });
 
 async function submitLogic() {
-  const firstName = guestFirstName.value;
-  const lastName = guestLastName.value;
-  const numOfGuests = parseInt(guestAmount.value);
-  alert(firstName);
+  const guestFirstName = document.getElementById("first-name").value;
+  const guestLastName = document.getElementById("last-name").value;
+  const guestAmount = parseInt(document.getElementById("guests").value);
 
   try {
-      await client.connect();
+    const response = await fetch("/submit-guest", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName: guestFirstName,
+        lastName: guestLastName,
+        numOfGuests: guestAmount,
+      }),
+    });
 
-      const db = client.db(dbName);
-      const collection = db.collection(collectionName);
-
-      // Create a document to insert into the collection
-      const newGuest = {
-          firstName: firstName,
-          lastName: lastName,
-          numOfGuests: numOfGuests
-      };
-
-      // Insert the document into the collection
-      const result = await collection.insertOne(newGuest);
-      console.log("Document inserted with _id:", result.insertedId);
+    const result = await response.json();
+    console.log(result.message);
   } catch (error) {
-      console.error("Error inserting document:", error);
-  } finally {
-      await client.close();
+    console.error("Error:", error);
   }
 }

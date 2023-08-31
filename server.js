@@ -1,44 +1,47 @@
-const express = require('express');
+const express = require("express");
+const bodyParser = require("body-parser");
+const { MongoClient } = require("mongodb");
+require("dotenv").config();
+
 const app = express();
-const { MongoClient } = require('mongodb');
-require('dotenv').config();
+app.use(bodyParser.json());
 
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
+
 const dbName = "Halloween";
 const collectionName = "GuestInfo";
 
-// Middleware to parse JSON data
-app.use(express.json());
+app.use(express.static("public")); // Serve static files from the "public" directory
 
-app.post('/submit', async (req, res) => {
-    const { firstName, lastName, numOfGuests } = req.body;
+app.post("/submit-guest", async (req, res) => {
+  const { firstName, lastName, numOfGuests } = req.body;
 
-    try {
-        await client.connect();
-        const db = client.db(dbName);
-        const collection = db.collection(collectionName);
+  try {
+    await client.connect();
 
-        const newGuest = {
-            firstName: firstName,
-            lastName: lastName,
-            numOfGuests: numOfGuests
-        };
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
 
-        const result = await collection.insertOne(newGuest);
-        console.log("Document inserted with _id:", result.insertedId);
+    const newGuest = {
+      firstName: firstName,
+      lastName: lastName,
+      numOfGuests: numOfGuests,
+    };
 
-        res.status(200).json({ message: 'Data inserted successfully' });
-    } catch (error) {
-        console.error("Error inserting document:", error);
-        res.status(500).json({ message: 'Error inserting data' });
-    } finally {
-        await client.close();
-    }
+    const result = await collection.insertOne(newGuest);
+    console.log("Document inserted with _id:", result.insertedId);
+
+    res.json({ message: "Guest information submitted successfully." });
+  } catch (error) {
+    console.error("Error inserting document:", error);
+    res.status(500).json({ message: "Internal server error" });
+  } finally {
+    await client.close();
+  }
 });
 
-// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
