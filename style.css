@@ -33,6 +33,7 @@
     border-bottom:20px solid #720000;
     filter:url("#goo");
     z-index: 1;
+    background-color: hotpink;
   }
   .cont .drip{
     height:8px;
