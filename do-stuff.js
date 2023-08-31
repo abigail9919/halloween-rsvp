@@ -4,8 +4,8 @@ require('dotenv').config();
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
-const dbName = "your-database-name";
-const collectionName = "your-collection-name";
+const dbName = "Halloween";
+const collectionName = "GuestInfo";
 
 const guest = {
     firstName: String,
