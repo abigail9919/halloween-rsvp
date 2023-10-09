@@ -100,7 +100,7 @@
   .rsvp-card {
     overflow-y: hidden;
     width: 60%;
-    height: 80vh;
+    height: fit-content;
     background-color: black;
     border: 1px solid white;
     color: white;
@@ -120,23 +120,25 @@
   }
   h1 {
     font-family: "Metal Mania";
-    font-size: 60px;
+    font-size: 40px;
     text-align: center;
-    padding: 40px;
+    padding-top: 40px;
   }
 
-  h3 {
-    font-size: 30px;
+  h4 {
+    font-size: 20px;
     text-align: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
   }
 
   p {
-    width: 40%;
+    width: 75%;
     text-align: justify;
     margin-top: 0px;
-    margin-left: 60px;
     padding-top: 30px;
     line-height: 2;
+    padding-bottom: 50px;
   }
 
   .form-group {
@@ -220,19 +222,32 @@
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1000px) {
+    .cont {
+      overflow-x: hidden;
+      position: absolute;
+    }
+    .drip {
+      position: absolute;
+      top: 98px;
+    }
     .rsvp-card {
       border: none;
       box-shadow: none;
       overflow-y: scroll;
       width: 100%;
+      height: 100%;
+      background-color: transparent;
+      position: absolute;
     }
     h1 {
+      padding-top: 75px;
       font-size: xx-large;
       margin-left: auto;
       margin-right: auto;
     }
-    h3 {
+    h4 {
+      padding-top: 20px;
       margin-left: auto;
       margin-right: auto;
       font-size: medium;
@@ -241,33 +256,11 @@
       flex-direction: column;
     }
     p {
-      width: 80%;
-    text-align: justify;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.5;
-    }
-    .form-wrapper {
-      margin-top: 10px;
-      width: 90%;
+      width: 100%;
+      text-align: justify;
+      margin-top: 30px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.5;
     }
-    input {
-      width: 100%;
-      height: 50px;
-      font-size: small;
-    }
-    .form-control, .floating-label {
-      font-size: small;
-    }
-    .form-control, .floating-label {
-      margin-top: 10px;
-    }
-  }
-
-  @media only screen and (max-width: 400px) {
-
-    
   }

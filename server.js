@@ -1,24 +1,37 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { MongoClient } = require("mongodb");
-require("dotenv").config();
+const dotenv = require("dotenv");
+const cors = require("cors");
 
-const app = express();
-app.use(bodyParser.json());
+dotenv.config();
 
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
+const app = express();
+app.use(bodyParser.json());
+
 const dbName = "Halloween";
 const collectionName = "GuestInfo";
 
-app.use(express.static("public")); // Serve static files from the "public" directory
+app.use(cors({
+  origin: 'http://localhost:5500',
+}));
+
+app.use(express.static("public"));
 
 app.post("/submit-guest", async (req, res) => {
   const { firstName, lastName, numOfGuests } = req.body;
+  console.log("REQ", req.body);
+  console.log("FIRST", firstName);
+
+  console.log("Received data:", firstName, lastName, numOfGuests);
 
   try {
     await client.connect();
+
+    console.log("Connected to the database");
 
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
@@ -28,6 +41,8 @@ app.post("/submit-guest", async (req, res) => {
       lastName: lastName,
       numOfGuests: numOfGuests,
     };
+
+    console.log("NEW GUEST:", newGuest.firstName, newGuest.lastName);
 
     const result = await collection.insertOne(newGuest);
     console.log("Document inserted with _id:", result.insertedId);
